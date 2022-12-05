@@ -1,0 +1,76 @@
+to create django folder
+run: django-admin startproject akshata
+
+then to add migration files run: python manage.py startapp pranav
+
+to start django server run: python manage.py runserver
+
+to connect pranav folder to akshata -> open settings.py of akshata and in INSTALLED APP just mention 'Akshata'
+
+after that inside pranav create templates folder and inside it create folder of pranav again and inside it create home.html file
+write <h1>hello</h1>
+
+
+inside views.py of pranav write:
+from django.shortcuts import render
+
+
+def home(request):
+  return render(request, 'base/home.html')
+
+then create urls.py inside pranav write in it:
+from django.urls import path
+from . import views
+
+urlpatterns=[
+  path('', views.home)
+]
+
+now open urls.py of Akshata
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('base.urls'))
+]
+
+runserver again
+
+now create 'staticfiles' folder inside main Akshata folder -> akshata, pranav and staticfiles
+Inside staticfiles create css folder and image folder insert some image from device to image folder
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TODO List
+
+create django project using django-admin startproject project_name
+
+run the server using python manage.py runserver
+
+Run python manage.py migrate
+
+Run python manage.py createsuperuser
+
+Again run the server 
+
+Run the command python manage.py startapp tasks
