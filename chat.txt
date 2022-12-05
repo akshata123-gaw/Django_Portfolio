@@ -1,0 +1,37 @@
+	1. Virtual enviornmnet setup
+	2. pip install virtualenv
+	3. Venv Scripts\activate
+	4. Django-admin startproject <name> chat_app
+	5. Python manage.py runserver
+	6. Python manage.py startapp <name>chat
+	7. Add app to the installed apps in setting.py
+	8. Create a templates folder and specify it in templates in settings.py :BASE_DIR/\templates   and create html files in it
+	9. In chat folder create new file names urls.py
+	10.  in urls.py :                 from django.urls import path
+	                                    from  . Import views 
+	                                   
+	                                    urlpatterns=[
+	                                         path(' ',views.home,name="home")   // home is the main html page present in templates   folder     
+	11. Now as we imported views in urls page we need a function in views named home so that it can decide the content
+	12. Go to views.py file create home function :  def home(request):
+	                                                                                            return (request,'home.html)        
+	13. Go to urls.py page In chat_app and add include in the imports and then add path in urlpatterns:  path(' ',include('chat.urls'))
+	14. Runserver to check the update
+	15. Now we need to create models :  Each attribute of the model represents a database field
+	16. Goto models.py page create models :      class Room(models.Model):
+	                                                                                             name=models.CharField(max_length=1000)
+	                                                                         class Message(models.Model):
+	                                                                                           value=models.CharFeild(max_length=1000000000)
+	                                                                                           date=models.DateTimeFeild(blank=True)
+	                                                                                           user= models.CharField(max_length=1000)
+	                                       room=models.CharField(max_length=1000)
+	
+	17. Then run command python manage.py makemigrations
+	18. Then run command python manage.py migrate
+	19. Then create a superuser to accses database therefore run command python manage.py createsuperuser
+	20. Now we need to register this models in admin file
+	                                       from .models import Room,Message
+	                                       admin.site.register(Room)
+	                                       admin.site.register(Message)
+	21. Now we need to be specified if a room maned by user is present in databse or not if not create it if yes then add the user to that room , for this we need to create a new path in urls.py
+	
